@@ -1,0 +1,98 @@
+server:
+  port: 8222
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:1111
+    # 使用服务发现路由
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          # 服务路由名小写
+          # lower-case-service-id: true
+      routes:
+        - id: service-acl # 路由的id,没有规定规则但要求唯一,建议配合服务名
+          #匹配后提供服务的路由地址
+          uri: lb://service-acl
+          predicates:
+            - Path=/*/acl/** # 断言，路径相匹配的进行路由
+        # 配置service-paper
+        - id: service-paper
+          #匹配后提供服务的路由地址
+          uri: lb://service-paper
+          predicates:
+            - Path=/paperservice/** #断言,路径相匹配的进行路由
+        # 配置service-expert
+        - id: service-expert
+          #匹配后提供服务的路由地址
+          uri: lb://service-expert
+          predicates:
+            - Path=/expertservice/** #断言,路径相匹配的进行路由
+        - id: service-oss
+          #匹配后提供服务的路由地址
+          uri: lb://service-oss
+          predicates:
+            - Path=/oss/** #断言,路径相匹配的进行路由
+        - id: service-domain
+          #匹配后提供服务的路由地址
+          uri: lb://service-domain
+          predicates:
+            - Path=/domainservice/** #断言,路径相匹配的进行路由
+        - id: service-rs
+          #匹配后提供服务的路由地址
+          uri: lb://service-rs
+          predicates:
+            - Path=/rs/** #断言,路径相匹配的进行路由
+        - id: service-statistics
+          #匹配后提供服务的路由地址
+          uri: lb://service-statistics
+          predicates:
+            - Path=/statistics/** #断言,路径相匹配的进行路由
+        - id: service-ucenter
+          #匹配后提供服务的路由地址
+          uri: lb://service-ucenter
+          predicates:
+            - Path=/ucenter/** #断言,路径相匹配的进行路由
+        # 配置service-expert
+        - id: service-patent
+          #匹配后提供服务的路由地址
+          uri: lb://service-patent
+          predicates:
+            - Path=/patentservice/** #断言,路径相匹配的进行路由
+        - id: service-achievement
+          #匹配后提供服务的路由地址
+          uri: lb://service-achievement
+          predicates:
+            - Path=/achievementservice/** #断言,路径相匹配的进行路由
+        # 配置service-institution
+        - id: service-institution
+        #匹配后提供服务的路由地址
+          uri: lb://service-institution
+          predicates:
+            - Path=/institutionservice/** #断言,路径相匹配的进行路由
+        - id: service-requirement
+          uri: lb://service-requirement
+          predicates:
+            - Path=/requirementservice/**
+        - id: service-solution
+          uri: lb://service-solution
+          predicates:
+            - Path=/solutionservice/**
+        - id: service-case
+          uri: lb://service-case
+          predicates:
+            - Path=/caseservice/**
+        - id: service-kg
+          uri: lb://service-kg
+          predicates:
+            - Path=/kg/**
+        - id: service-relations
+          uri: lb://service-relations
+          predicates:
+            - Path=/relationservice/**
+
+

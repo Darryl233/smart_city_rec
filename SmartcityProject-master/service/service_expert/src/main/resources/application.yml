@@ -1,0 +1,51 @@
+server:
+  port: 8001
+
+
+spring:
+  application:
+    name: service-expert
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/smartcity?serverTimezone=GMT%2B8&characterEncoding=UTF-8
+    #url: jdbc:mysql://192.168.8.11:3306/smartcity?serverTimezone=GMT%2B8&characterEncoding=UTF-8
+    username: root
+    password: smartcity
+    #password: 123456
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:1111
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+# 配置logback日志，需要删除application.yml中的日志配置
+# 日志配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 设置日志级别 error,warn,info,debug, 优先级高到低
+logging:
+  level:
+    root: info
+#hystrix的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000

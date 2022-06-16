@@ -1,0 +1,107 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.smartcity:service:pom:0.0.1-SNAPSHOT
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: com.aliyun.oss:aliyun-sdk-oss:jar -> version ${aliyun.oss.version} vs ${aliyun-sdk-oss.version} @ com.smartcity:smartcity_parent:0.0.1-SNAPSHOT, /Users/bytedance/dev_py/SmartcityProject-master/pom.xml, line 151, column 25
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.smartcity:smartcity_parent:pom:0.0.1-SNAPSHOT
+[WARNING] 'dependencyManagement.dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: com.aliyun.oss:aliyun-sdk-oss:jar -> version ${aliyun.oss.version} vs ${aliyun-sdk-oss.version} @ line 151, column 25
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] smartcity_parent                                                   [pom]
+[INFO] common                                                             [pom]
+[INFO] common-utils                                                       [jar]
+[INFO] service-base                                                       [jar]
+[INFO] service                                                            [pom]
+[INFO] service-oss                                                        [jar]
+[INFO] service_expert                                                     [jar]
+[INFO] service_paper                                                      [jar]
+[INFO] service_domain                                                     [jar]
+[INFO] service_                                                           [jar]
+[INFO] service_msm                                                        [jar]
+[INFO] service_ucenter                                                    [jar]
+[INFO] service_statistics                                                 [jar]
+[INFO] spring_security                                                    [jar]
+[INFO] service_acl                                                        [jar]
+[INFO] service_patent                                                     [jar]
+[INFO] service_achievement                                                [jar]
+[INFO] service_institution                                                [jar]
+[INFO] service_KG                                                         [jar]
+[INFO] service_requirement                                                [jar]
+[INFO] service_solution                                                   [jar]
+[INFO] service_case                                                       [jar]
+[INFO] service_relations                                                  [jar]
+[INFO] test                                                               [jar]
+[INFO] infrastructure                                                     [pom]
+[INFO] api_gateway                                                        [jar]
+[INFO] 
+[INFO] -------------------< com.smartcity:smartcity_parent >-------------------
+[INFO] Building smartcity_parent 0.0.1-SNAPSHOT                          [1/26]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ------------------------< com.smartcity:common >------------------------
+[INFO] Building common 0.0.1-SNAPSHOT                                    [2/26]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------------< com.smartcity:common-utils >---------------------
+[INFO] Building common-utils 0.0.1-SNAPSHOT                              [3/26]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ common-utils ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/bytedance/dev_py/SmartcityProject-master/common/common-utils/src/main/resources
+[INFO] skip non existing resourceDirectory /Users/bytedance/dev_py/SmartcityProject-master/common/common-utils/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ common-utils ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to /Users/bytedance/dev_py/SmartcityProject-master/common/common-utils/target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for smartcity_parent 0.0.1-SNAPSHOT:
+[INFO] 
+[INFO] smartcity_parent ................................... SUCCESS [  0.061 s]
+[INFO] common ............................................. SUCCESS [  0.002 s]
+[INFO] common-utils ....................................... FAILURE [  1.489 s]
+[INFO] service-base ....................................... SKIPPED
+[INFO] service ............................................ SKIPPED
+[INFO] service-oss ........................................ SKIPPED
+[INFO] service_expert ..................................... SKIPPED
+[INFO] service_paper ...................................... SKIPPED
+[INFO] service_domain ..................................... SKIPPED
+[INFO] service_ ........................................... SKIPPED
+[INFO] service_msm ........................................ SKIPPED
+[INFO] service_ucenter .................................... SKIPPED
+[INFO] service_statistics ................................. SKIPPED
+[INFO] spring_security .................................... SKIPPED
+[INFO] service_acl ........................................ SKIPPED
+[INFO] service_patent ..................................... SKIPPED
+[INFO] service_achievement ................................ SKIPPED
+[INFO] service_institution ................................ SKIPPED
+[INFO] service_KG ......................................... SKIPPED
+[INFO] service_requirement ................................ SKIPPED
+[INFO] service_solution ................................... SKIPPED
+[INFO] service_case ....................................... SKIPPED
+[INFO] service_relations .................................. SKIPPED
+[INFO] test ............................................... SKIPPED
+[INFO] infrastructure ..................................... SKIPPED
+[INFO] api_gateway ........................................ SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.018 s
+[INFO] Finished at: 2022-03-13T01:35:34+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.1:compile (default-compile) on project common-utils: Fatal error compiling: java.lang.IllegalAccessError: class lombok.javac.apt.LombokProcessor (in unnamed module @0x6a6c7f42) cannot access class com.sun.tools.javac.processing.JavacProcessingEnvironment (in module jdk.compiler) because module jdk.compiler does not export com.sun.tools.javac.processing to unnamed module @0x6a6c7f42 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :common-utils

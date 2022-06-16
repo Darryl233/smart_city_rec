@@ -1,0 +1,44 @@
+server:
+  port: 8018
+
+spring:
+  application:
+    name: service-kg
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.100.17:1111
+  data:
+    neo4j:
+      uri: bolt://192.168.8.144:11003
+      username: neo4j
+      password: 1906205
+#  logging.level.org.springframework.data.neo4j.cypher = trace
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          neo4j:
+            cypher:
+              trace
+## 设置日志级别 error,warn,info,debug, 优先级高到低
+#logging:
+#  level:
+#    root: info
+#
+##hystrix的超时时间
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: true
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 30000
+##ribbon的超时时间
+#ribbon:
+#  ReadTimeout: 30000
+
+#  ConnectTimeout: 30000

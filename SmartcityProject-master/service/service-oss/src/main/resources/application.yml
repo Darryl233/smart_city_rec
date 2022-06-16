@@ -1,0 +1,41 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: service-oss
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:1111
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+#阿里云oss 不同的服务器，地址不同
+aliyun:
+  oss:
+    file:
+      # 地域节点
+      endpoint: oss-cn-hangzhou.aliyuncs.com
+      keyid: LTAI4G3s8jafgqD8LmnxqeEb
+      keysecret: grcrCPHjUhIvGK9qAPrUlzPiAvz6cZ
+      #bucket可以在控制台创建，也可以使用java代码创建
+      bucketname: smartcity-youngpq
+
+#hystrix的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
