@@ -1,0 +1,68 @@
+server:
+  port: 8012
+
+
+spring:
+  application:
+    name: service-database
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/smartcity?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: smartcity
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:1111
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+
+# 配置logback日志，需要删除application.yml中的日志配置
+# 日志配置
+mybatis-plus:
+  mapper-locations:
+    classpath*: com/smartcity/service/resources_crud/mapper/**/xml.*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 设置日志级别 error,warn,info,debug, 优先级高到低
+logging:
+  # 日志级别
+  level:
+    root: info
+  path: ./logs
+  pattern:
+    # 日志记录格式[组件名称] [时间戳] [日志级别] [类名.方法名] [消息文本]
+    file: smartcity %d{yyyy-MM-dd HH:mm:ss.SSS} %p %C.%M %m %n
+  logback:
+    rollingpolicy:
+      # 根据文件大小归档，超过2KB自动归档，次日启动服务时也会自动归档
+      file-name-pattern: /logs/%d{yyyyMMdd}/${spring.application.name}.out.log.%d{yyyy-MM-dd}.%i.gz
+      # 最大日志文件大小(默认为10MB，这里为了测试归档，暂时设置为2KB)
+      max-file-size: 2KB
+      # 要保留的日志备份的总大小(默认为0B)
+      total-size-cap: 1GB
+      # 保存存档日志文件的最大天数(默认为7天)
+      max-history: 20
+
+#hystrix的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
